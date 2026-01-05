@@ -10,7 +10,7 @@ Este repositorio contiene dos scripts independientes que sirven como **pruebas m
    - ECRTM (TopMost)
 
 2. **`TNTM.ipynb`**
-   Entrena el modelo avanzado **TNTM** utilizando embeddings precalculados de BERT.
+   Entrena el modelo **TNTM** utilizando embeddings precalculados de BERT.
 
 Ambos scripts están diseñados para ejecutarse de forma aislada y verificar que los modelos se inicializan, entrenan y producen resultados mínimos sin errores.
 
@@ -36,7 +36,7 @@ pip install torch scikit-learn gensim topmost
 **Salida**: Impresión en consola de las 10 palabras más representativas por tópico para cada modelo.
 
 #### 2. TNTM.ipynb – Prueba de TNTM
-**Objetivo**: Entrenar correctamente TNTM con embeddings de BERT sobre 600 documentos, incluyendo splits de train/val/test.
+**Objetivo**: Entrenar correctamente TNTM con embeddings de BERT sobre 1000 documentos, incluyendo splits de train/val/test.
 
 **Requisitos específicos**:
 ```bash
@@ -45,21 +45,19 @@ pip install pickle torch pandas tqdm numpy octis TNTM_SentenceTransformer
 - Archivo requerido: `TNTM/Data/DataResults_BERT/cleaned_embedding_df_20ng_BERT.pickle` (embeddings precalculados de BERT).
 
 **Configuración**:
-- Documentos: 600 (configurable)
-- Tópicos: 20
+- Documentos: 1000
+- Tópicos: 10
 - Tasas de aprendizaje: Encoder 1e-3, Decoder 1e-3
 - Semilla: 42
 
 **Salidas**:
-- Modelo entrenado: `example/20_topics_600docs/model.pt`
-- Conjunto de prueba: `example/20_topics_600docs/test_set_60docs.pickle`
+- Modelo entrenado: `example/20_topics_1000docs/model.pt`
+- Impresión en consola de las 10 palabras más representativas por tópico.
 
 **Notas técnicas**:
 - Incluye parches para compatibilidad con tensores dispersos y evitar conjuntos internos vacíos.
-- Conversión automática de sparse a dense cuando es necesario.
 
 ### Notas generales
 - Ambos scripts son independientes y están pensados como pruebas rápidas de funcionamiento.
-- Los resultados pueden variar ligeramente entre ejecuciones debido a inicializaciones aleatorias (excepto donde se fija la semilla).
-- Ideales para verificar la instalación correcta de las librerías y el entorno antes de experimentos más grandes.
+- Útiles para verificar la instalación correcta de las librerías y el entorno antes de experimentos más grandes.
 
